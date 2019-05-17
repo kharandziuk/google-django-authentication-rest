@@ -15,7 +15,6 @@ from dotenv import load_dotenv
 
 from pathlib import Path  # python3 only
 env_path = Path('..', '.env').resolve()
-print(env_path)
 load_dotenv(dotenv_path=env_path, verbose=True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -31,7 +30,10 @@ SECRET_KEY = 'r&3)(8d*f_75*@%4j4=vrx@am$@sg@w$r2t^%w76re^#!1o1e#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    'myapp.com'
+]
 
 
 # Application definition
@@ -43,7 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'social_django'
+    'social_django',
+    'project',
 ]
 
 MIDDLEWARE = [
@@ -128,7 +131,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.oauth2',
+    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
