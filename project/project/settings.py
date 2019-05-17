@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from pathlib import Path
+
+from django.urls import reverse_lazy
 from dotenv import load_dotenv
 
-from pathlib import Path  # python3 only
 env_path = Path('..', '.env').resolve()
 load_dotenv(dotenv_path=env_path, verbose=True)
 
@@ -138,3 +140,5 @@ AUTHENTICATION_BACKENDS = (
 
 SOCIAL_AUTH_FACEBOOK_KEY = os.environ['SOCIAL_AUTH_FACEBOOK_KEY']
 SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['SOCIAL_AUTH_FACEBOOK_SECRET']
+
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
