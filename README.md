@@ -4,3 +4,5 @@
 * copy dotenv.example into .env
 * put propper credentials in .env
 * run `docker-compose up`
+* localhost:8000 -> non-spa version
+* localhost:3000 -> spa and rest
