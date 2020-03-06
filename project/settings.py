@@ -16,11 +16,12 @@ from pathlib import Path
 from django.urls import reverse_lazy
 from dotenv import load_dotenv
 
-env_path = Path('..', '.env').resolve()
-load_dotenv(dotenv_path=env_path, verbose=True)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+env_path = Path(BASE_DIR, '.env').resolve()
+load_dotenv(dotenv_path=env_path, verbose=True)
 
 
 # Quick-start development settings - unsuitable for production
@@ -133,17 +134,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
 
-SOCIAL_AUTH_FACEBOOK_KEY = os.environ['SOCIAL_AUTH_FACEBOOK_KEY']
-SOCIAL_AUTH_FACEBOOK_SECRET = os.environ['SOCIAL_AUTH_FACEBOOK_SECRET']
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_KEY']
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ['SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET']
 
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-  'locale': 'ru_RU',
-  'fields': 'id,name,picture'
-}
 
 LOGOUT_REDIRECT_URL = reverse_lazy('index')

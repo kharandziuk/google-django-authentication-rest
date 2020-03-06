@@ -9,12 +9,10 @@ from social_django.models import UserSocialAuth
 
 class AboutView(LoginRequiredMixin, TemplateView):
     template_name="about.html"
-    login_url = reverse_lazy('social:begin', args=['facebook'])
+    login_url = reverse_lazy('social:begin', args=['google-oauth2'])
 
     def get_context_data(self, **kwargs):
         context = super(AboutView, self).get_context_data(**kwargs)
-        s_user = self.request.user.social_auth.get(provider='facebook')
-        context['avatar_url'] = f'https://graph.facebook.com/{s_user.uid}/picture?type=large'
         return context
 
 
