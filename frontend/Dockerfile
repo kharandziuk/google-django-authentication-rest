@@ -4,5 +4,3 @@ COPY . /code/
 WORKDIR /code/
 
 RUN yarn
-
-CMD [ "./entrypoint.sh" ]
