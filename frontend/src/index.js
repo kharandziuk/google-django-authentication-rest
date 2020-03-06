@@ -3,17 +3,15 @@ import 'react-app-polyfill/stable'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import GoogleLogin from 'react-google-login';
+
 import axios from 'axios'
- 
- 
+
 const responseGoogle = (response) => {
-  console.log(response);
-  console.log(response.accessToken);
-  const url = 'http://localhost:8000/auth/convert-token/'
+  const url = `${process.env.API_HOST}/auth/convert-token/`
   axios.post(url, {
     grant_type: 'convert_token',
-    client_id: '5ysYYZ0vFkAvt25439LngkGN4aB84IWmYBx1C61G',
-    client_secret: 'KX8QJZgEIZKeZJO6Ouz38Sd8smIngrEuAj4vOetgwIpQfgzSE7UKJOVXvi5bzdKsOj9W2OtS5n6Ndm1GO14VcubsZTX9KWNUYArthZ0hcwuMtZxLOF5hTYJ7BEGEQeEH',
+    client_id: process.env.OUR_OAUTH2_CLIENT_ID,
+    client_secret: process.env.OUR_OAUTH2_CLIENT_SECRET,
     backend: 'google-oauth2',
     token: response.accessToken
   })
