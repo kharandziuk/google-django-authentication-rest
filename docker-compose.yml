@@ -29,6 +29,8 @@ services:
       - ./frontend/:/code/
     ports:
       - 3000:3000
+    environment:
+      - REACT_APP_API_HOST=$API_HOST
     env_file:
       - .env
     command: yarn start

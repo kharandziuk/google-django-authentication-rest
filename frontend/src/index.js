@@ -6,12 +6,15 @@ import GoogleLogin from 'react-google-login';
 
 import axios from 'axios'
 
+console.log(process.env)
+
 const responseGoogle = (response) => {
-  const url = `${process.env.API_HOST}/auth/convert-token/`
+  console.log(process.env)
+  const url = `${process.env.REACT_APP_API_HOST}/auth/convert-token/`
   axios.post(url, {
     grant_type: 'convert_token',
-    client_id: process.env.OUR_OAUTH2_CLIENT_ID,
-    client_secret: process.env.OUR_OAUTH2_CLIENT_SECRET,
+    client_id: process.env.REACT_APP_OUR_OAUTH2_CLIENT_ID,
+    client_secret: process.env.REACT_APP_OUR_OAUTH2_CLIENT_SECRET,
     backend: 'google-oauth2',
     token: response.accessToken
   })
