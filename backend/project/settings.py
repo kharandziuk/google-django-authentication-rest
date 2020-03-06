@@ -20,7 +20,7 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-env_path = Path(BASE_DIR, '.env').resolve()
+env_path = Path(BASE_DIR, '..', '.env').resolve()
 load_dotenv(dotenv_path=env_path, verbose=True)
 
 
@@ -48,11 +48,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party
     'rest_framework',
     'social_django',
     'oauth2_provider',
     'rest_framework_social_oauth2',
+    'django_extensions',
+    # our
     'project',
+    'core'
 ]
 
 REST_FRAMEWORK = {
@@ -167,3 +171,9 @@ CORS_ORIGIN_WHITELIST = [
 
 
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
+
+DEFAULT_ROOT_USER = os.environ['DEFAULT_ROOT_USER']
+DEFAULT_ROOT_PASS = os.environ['DEFAULT_ROOT_PASS']
+
+OUR_OAUTH2_CLIENT_ID = os.environ['OUR_OAUTH2_CLIENT_ID']
+OUR_OAUTH2_CLIENT_SECRET = os.environ['OUR_OAUTH2_CLIENT_SECRET']

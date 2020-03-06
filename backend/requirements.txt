@@ -19,3 +19,4 @@ urllib3==1.25.2
 django-rest-framework-social-oauth2
 djangorestframework
 django-cors-headers
+django-extensions
