@@ -19,7 +19,7 @@ const responseGoogle = (response) => {
     token: response.accessToken
   })
   .then(function (response) {
-          console.log(response);
+      alert("everything works. Your token is ${response.data.access_token}")
   })
 }
 
