@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  db:
+    image: postgres:11-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5432:5432
+    env_file:
+      - .env
+
+  backend:
+    build: ./backend
+    volumes:
+      - ./backend/:/code/
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    command: ./wait-for-it.sh db:5432 -- ./entrypoint.sh
+    environment:
+      - SQL_HOST=db
+    env_file:
+      - .env
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./backend/:/code/
+    ports:
+      - 3000:3000
+    env_file:
+      - .env
+volumes:
+  postgres_data:
