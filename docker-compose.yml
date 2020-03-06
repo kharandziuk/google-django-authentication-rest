@@ -9,7 +9,6 @@ services:
       - 5432:5432
     env_file:
       - .env
-
   backend:
     build: ./backend
     volumes:
@@ -27,10 +26,12 @@ services:
   frontend:
     build: ./frontend
     volumes:
-      - ./backend/:/code/
+      - ./frontend/:/code/
     ports:
       - 3000:3000
     env_file:
       - .env
+    command: yarn start
+
 volumes:
   postgres_data:
