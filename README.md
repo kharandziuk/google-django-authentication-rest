@@ -1,3 +1,6 @@
-Tested on Mac with Python 3.7.3. To install and run the application
-* install the dependencies from requirements.txt
-* provide .env in the root folder of the project(check dotenv.example)
+# TO RUN
+* install docker
+* Create an app and obtain credentials https://developers.google.com/identity/protocols/OAuth2
+* copy dotenv.example into .env
+* put propper credentials in .env
+* run `docker-compose up`
